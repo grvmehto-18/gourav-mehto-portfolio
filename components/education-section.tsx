@@ -1,6 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Calendar, MapPin, GraduationCap, Award, BadgeIcon as Certificate, Trophy } from "lucide-react"
+import { MotionSection } from "./motion-section"
 
 export function EducationSection() {
   const education = [
@@ -82,23 +83,23 @@ export function EducationSection() {
 
   const getStatusColor = (status: string) => {
     return status === "Current"
-      ? "bg-green-100 text-green-800 border-green-200"
-      : "bg-blue-100 text-blue-800 border-blue-200"
+      ? "bg-green-100 text-green-800 border-green-200 dark:bg-green-900/50 dark:text-green-300 dark:border-green-800/50"
+      : "bg-blue-100 text-blue-800 border-blue-200 dark:bg-blue-900/50 dark:text-blue-300 dark:border-blue-800/50"
   }
 
   const getCertificationType = (type: string) => {
     const colors = {
-      "Professional Simulation": "bg-red-100 text-red-800 border-red-200",
-      "Professional Course": "bg-blue-100 text-blue-800 border-blue-200",
-      "Academic Certification": "bg-green-100 text-green-800 border-green-200",
-      "Multiple Certifications": "bg-purple-100 text-purple-800 border-purple-200",
-      "Web Development": "bg-orange-100 text-orange-800 border-orange-200",
+      "Professional Simulation": "bg-red-100 text-red-800 border-red-200 dark:bg-red-900/50 dark:text-red-300 dark:border-red-800/50",
+      "Professional Course": "bg-blue-100 text-blue-800 border-blue-200 dark:bg-blue-900/50 dark:text-blue-300 dark:border-blue-800/50",
+      "Academic Certification": "bg-green-100 text-green-800 border-green-200 dark:bg-green-900/50 dark:text-green-300 dark:border-green-800/50",
+      "Multiple Certifications": "bg-purple-100 text-purple-800 border-purple-200 dark:bg-purple-900/50 dark:text-purple-300 dark:border-purple-800/50",
+      "Web Development": "bg-orange-100 text-orange-800 border-orange-200 dark:bg-orange-900/50 dark:text-orange-300 dark:border-orange-800/50",
     }
-    return colors[type as keyof typeof colors] || "bg-gray-100 text-gray-800 border-gray-200"
+    return colors[type as keyof typeof colors] || "bg-gray-100 text-gray-800 border-gray-200 dark:bg-gray-900/50 dark:text-gray-300 dark:border-gray-800/50"
   }
 
   return (
-    <section id="education" className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30">
+    <MotionSection id="education" className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30 dark:bg-muted/10">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold mb-4">Education & Achievements</h2>
@@ -110,13 +111,13 @@ export function EducationSection() {
         {/* Education */}
         <div className="mb-16">
           <h3 className="text-2xl font-semibold mb-8 flex items-center gap-2">
-            <GraduationCap className="h-6 w-6 text-red-600" />
+            <GraduationCap className="h-6 w-6 text-red-600 dark:text-red-500" />
             Academic Background
           </h3>
           <div className="space-y-6">
             {education.map((edu, index) => (
               <Card key={index} className="relative">
-                <div className="absolute left-0 top-6 w-1 h-16 bg-red-600 rounded-full" />
+                <div className="absolute left-0 top-6 w-1 h-16 bg-red-600 dark:bg-red-500 rounded-full" />
                 <CardHeader className="pl-8">
                   <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4">
                     <div>
@@ -159,7 +160,7 @@ export function EducationSection() {
         {/* Certifications */}
         <div className="mb-16">
           <h3 className="text-2xl font-semibold mb-8 flex items-center gap-2">
-            <Certificate className="h-6 w-6 text-blue-600" />
+            <Certificate className="h-6 w-6 text-blue-600 dark:text-blue-500" />
             Professional Certifications
           </h3>
           <div className="grid md:grid-cols-2 gap-6">
@@ -189,18 +190,18 @@ export function EducationSection() {
         {/* Honors & Awards */}
         <div>
           <h3 className="text-2xl font-semibold mb-8 flex items-center gap-2">
-            <Award className="h-6 w-6 text-yellow-600" />
+            <Award className="h-6 w-6 text-yellow-600 dark:text-yellow-500" />
             Honors & Awards
           </h3>
           <div className="grid md:grid-cols-2 gap-6">
             {honorsAwards.map((award, index) => (
-              <Card key={index} className="bg-gradient-to-br from-yellow-50 to-orange-50 border-yellow-200">
+              <Card key={index} className="bg-gradient-to-br from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20 border-yellow-200 dark:border-yellow-800/50">
                 <CardHeader>
                   <div className="flex items-start gap-4">
-                    <div className="text-yellow-600 bg-yellow-100 p-2 rounded-lg">{award.icon}</div>
+                    <div className="text-yellow-600 bg-yellow-100 dark:bg-yellow-900/50 dark:text-yellow-400 p-2 rounded-lg">{award.icon}</div>
                     <div>
                       <CardTitle className="text-lg mb-1">{award.title}</CardTitle>
-                      <p className="text-yellow-700 font-semibold">{award.achievement}</p>
+                      <p className="text-yellow-700 dark:text-yellow-300 font-semibold">{award.achievement}</p>
                       <p className="text-sm text-muted-foreground">{award.date}</p>
                     </div>
                   </div>
@@ -213,6 +214,6 @@ export function EducationSection() {
           </div>
         </div>
       </div>
-    </section>
+    </MotionSection>
   )
 }

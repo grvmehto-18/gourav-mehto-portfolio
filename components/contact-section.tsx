@@ -9,6 +9,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
 import { Mail, Phone, MapPin, Github, Send, MessageCircle } from "lucide-react";
+import { MotionSection } from "./motion-section";
 
 export function ContactSection() {
   const [formData, setFormData] = useState({
@@ -91,7 +92,7 @@ export function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8">
+    <MotionSection id="contact" className="py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold mb-4">Get In Touch</h2>
@@ -116,9 +117,7 @@ export function ContactSection() {
                 {contactInfo.map((info, index) => (
                   <div key={index} className="flex items-center gap-4">
                     <div
-                      className={`p-3 rounded-lg ${
-                        info.primary ? "bg-red-100 text-red-600" : "bg-muted"
-                      }`}>
+                      className={`p-3 rounded-lg ${info.primary ? "bg-red-100 text-red-600 dark:bg-red-900/50 dark:text-red-400" : "bg-muted"}`}>
                       {info.icon}
                     </div>
                     <div>
@@ -165,32 +164,32 @@ export function ContactSection() {
             </div>
 
             {/* Availability Status */}
-            <Card className="bg-green-50 border-green-200">
+            <Card className="bg-green-50 dark:bg-green-900/30 border-green-200 dark:border-green-800/50">
               <CardContent className="p-6">
                 <div className="flex items-center gap-3 mb-2">
                   <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse" />
-                  <h4 className="font-semibold text-green-800">
+                  <h4 className="font-semibold text-green-800 dark:text-green-300">
                     Available for Opportunities
                   </h4>
                 </div>
-                <p className="text-sm text-green-700">
+                <p className="text-sm text-green-700 dark:text-green-400">
                   Currently seeking full-time software development positions.
                   Open to remote, hybrid, or on-site roles.
                 </p>
                 <div className="flex flex-wrap gap-2 mt-3">
                   <Badge
                     variant="outline"
-                    className="border-green-600 text-green-600">
+                    className="border-green-600 text-green-600 dark:border-green-500 dark:text-green-500">
                     Full-Time
                   </Badge>
                   <Badge
                     variant="outline"
-                    className="border-green-600 text-green-600">
+                    className="border-green-600 text-green-600 dark:border-green-500 dark:text-green-500">
                     Remote
                   </Badge>
                   <Badge
                     variant="outline"
-                    className="border-green-600 text-green-600">
+                    className="border-green-600 text-green-600 dark:border-green-500 dark:text-green-500">
                     Java Developer
                   </Badge>
                 </div>
@@ -203,7 +202,7 @@ export function ContactSection() {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <Send className="h-5 w-5 text-red-600" />
+                  <Send className="h-5 w-5 text-red-600 dark:text-red-500" />
                   Send a Message
                 </CardTitle>
               </CardHeader>
@@ -277,7 +276,7 @@ export function ContactSection() {
 
                   <Button
                     type="submit"
-                    className="w-full bg-red-600 hover:bg-red-700 text-white">
+                    className="w-full bg-red-600 hover:bg-red-700 dark:bg-red-500 dark:hover:bg-red-600 text-white dark:text-white">
                     <Send className="mr-2 h-4 w-4" />
                     Send Message
                   </Button>
@@ -304,6 +303,6 @@ export function ContactSection() {
           </p>
         </div>
       </div>
-    </section>
+    </MotionSection>
   );
 }

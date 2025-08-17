@@ -1,6 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Calendar, MapPin, Building } from "lucide-react"
+import { MotionSection } from "./motion-section"
 
 export function ExperienceSection() {
   const experiences = [
@@ -37,16 +38,16 @@ export function ExperienceSection() {
   const getTypeColor = (type: string) => {
     switch (type) {
       case "Internship":
-        return "bg-blue-100 text-blue-800 border-blue-200"
+        return "bg-blue-100 text-blue-800 border-blue-200 dark:bg-blue-900/50 dark:text-blue-300 dark:border-blue-800/50"
       case "Simulation":
-        return "bg-green-100 text-green-800 border-green-200"
+        return "bg-green-100 text-green-800 border-green-200 dark:bg-green-900/50 dark:text-green-300 dark:border-green-800/50"
       default:
-        return "bg-gray-100 text-gray-800 border-gray-200"
+        return "bg-gray-100 text-gray-800 border-gray-200 dark:bg-gray-900/50 dark:text-gray-300 dark:border-gray-800/50"
     }
   }
 
   return (
-    <section id="experience" className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30">
+    <MotionSection id="experience" className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30 dark:bg-muted/10">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold mb-4">Professional Experience</h2>
@@ -59,7 +60,7 @@ export function ExperienceSection() {
           {experiences.map((exp, index) => (
             <Card key={index} className="relative">
               {/* Timeline indicator */}
-              <div className="absolute left-0 top-6 w-1 h-16 bg-red-600 rounded-full" />
+              <div className="absolute left-0 top-6 w-1 h-16 bg-red-600 dark:bg-red-500 rounded-full" />
 
               <CardHeader className="pl-8">
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
@@ -91,7 +92,7 @@ export function ExperienceSection() {
                   <ul className="space-y-2">
                     {exp.details.map((detail, detailIndex) => (
                       <li key={detailIndex} className="flex items-start">
-                        <div className="w-2 h-2 bg-red-600 rounded-full mt-2 mr-3 flex-shrink-0" />
+                        <div className="w-2 h-2 bg-red-600 dark:bg-red-500 rounded-full mt-2 mr-3 flex-shrink-0" />
                         <span className="text-muted-foreground">{detail}</span>
                       </li>
                     ))}
@@ -115,7 +116,7 @@ export function ExperienceSection() {
 
         {/* Call to action */}
         <div className="mt-12 text-center">
-          <Card className="bg-gradient-to-r from-red-50 to-blue-50 border-red-200">
+          <Card className="bg-gradient-to-r from-red-50 to-blue-50 dark:from-red-900/20 dark:to-blue-900/20 border-red-200 dark:border-red-800/50">
             <CardContent className="p-8">
               <h3 className="text-xl font-semibold mb-2">Looking for New Opportunities</h3>
               <p className="text-muted-foreground mb-4">
@@ -123,13 +124,13 @@ export function ExperienceSection() {
                 continue growing as a developer.
               </p>
               <div className="flex flex-wrap justify-center gap-2">
-                <Badge variant="outline" className="border-red-600 text-red-600">
+                <Badge variant="outline" className="border-red-600 text-red-600 dark:border-red-500 dark:text-red-500">
                   Full-Stack Development
                 </Badge>
-                <Badge variant="outline" className="border-blue-600 text-blue-600">
+                <Badge variant="outline" className="border-blue-600 text-blue-600 dark:border-blue-400 dark:text-blue-400">
                   Backend Engineering
                 </Badge>
-                <Badge variant="outline" className="border-green-600 text-green-600">
+                <Badge variant="outline" className="border-green-600 text-green-600 dark:border-green-500 dark:text-green-500">
                   Java Development
                 </Badge>
               </div>
@@ -137,6 +138,6 @@ export function ExperienceSection() {
           </Card>
         </div>
       </div>
-    </section>
+    </MotionSection>
   )
 }

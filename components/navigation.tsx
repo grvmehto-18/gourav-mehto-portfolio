@@ -2,7 +2,9 @@
 
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
-import { Menu, X } from "lucide-react"
+import { Menu, X, Moon } from "lucide-react"
+import { useTheme } from "next-themes"
+import { motion } from "framer-motion"
 
 const navItems = [
   { name: "Home", href: "#home" },
@@ -17,6 +19,7 @@ const navItems = [
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
   const [activeSection, setActiveSection] = useState("home")
+  const { setTheme, theme } = useTheme()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -58,26 +61,50 @@ export function Navigation() {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-4">
-              {navItems.map((item) => (
-                <button
-                  key={item.name}
-                  onClick={() => handleNavClick(item.href)}
-                  className={`px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${
-                    activeSection === item.href.substring(1)
-                      ? "text-primary bg-accent"
-                      : "text-muted-foreground hover:text-foreground hover:bg-accent"
-                  }`}
-                >
-                  {item.name}
-                </button>
-              ))}
-            </div>
+          <div className="hidden md:flex items-center space-x-4">
+            {navItems.map((item) => (
+              <button
+                key={item.name}
+                onClick={() => handleNavClick(item.href)}
+                className={`px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${
+                  activeSection === item.href.substring(1)
+                    ? "text-primary bg-accent"
+                    : "text-muted-foreground hover:text-foreground hover:bg-accent"
+                }`}
+              >
+                {item.name}
+              </button>
+            ))}
+            <motion.div
+              whileTap={{ rotate: 90, scale: 1.2 }}
+              transition={{ duration: 0.3 }}
+            >
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                aria-label="Toggle theme"
+              >
+                <Moon className="h-5 w-5" />
+              </Button>
+            </motion.div>
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden">
+          <div className="md:hidden flex items-center">
+            <motion.div
+              whileTap={{ rotate: 90, scale: 1.2 }}
+              transition={{ duration: 0.3 }}
+            >
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                aria-label="Toggle theme"
+              >
+                <Moon className="h-5 w-5" />
+              </Button>
+            </motion.div>
             <Button variant="ghost" size="sm" onClick={() => setIsOpen(!isOpen)} aria-label="Toggle menu">
               {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </Button>

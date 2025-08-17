@@ -1,6 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Code, Database, Server, Globe } from "lucide-react"
+import { MotionSection } from "./motion-section"
 
 export function AboutSection() {
   const highlights = [
@@ -27,7 +28,7 @@ export function AboutSection() {
   ]
 
   return (
-    <section id="about" className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30">
+    <MotionSection id="about" className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30 dark:bg-muted/10">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold mb-4">About Me</h2>
@@ -65,10 +66,10 @@ export function AboutSection() {
             <h3 className="text-2xl font-semibold">What I Do</h3>
             <div className="grid gap-4">
               {highlights.map((item, index) => (
-                <Card key={index} className="border-l-4 border-l-red-600">
+                <Card key={index} className="border-l-4 border-l-red-600 dark:border-l-red-500">
                   <CardContent className="p-6">
                     <div className="flex items-start space-x-4">
-                      <div className="text-red-600 flex-shrink-0">{item.icon}</div>
+                      <div className="text-red-600 dark:text-red-500 flex-shrink-0">{item.icon}</div>
                       <div>
                         <h4 className="font-semibold mb-2">{item.title}</h4>
                         <p className="text-sm text-muted-foreground">{item.description}</p>
@@ -83,7 +84,7 @@ export function AboutSection() {
               <h4 className="font-semibold mb-3">Currently Learning</h4>
               <div className="flex flex-wrap gap-2">
                 {["Microservices", "Android Development", "Block Chain", "Artificial Intelligence & Machine Learning"].map((tech) => (
-                  <Badge key={tech} variant="outline" className="border-blue-600 text-blue-600">
+                  <Badge key={tech} variant="outline" className="border-blue-600 text-blue-600 dark:border-blue-400 dark:text-blue-400">
                     {tech}
                   </Badge>
                 ))}
@@ -92,6 +93,6 @@ export function AboutSection() {
           </div>
         </div>
       </div>
-    </section>
+    </MotionSection>
   )
 }

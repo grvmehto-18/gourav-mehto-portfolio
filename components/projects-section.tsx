@@ -4,6 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Calendar, Github, Users, Database, Shield } from "lucide-react";
+import { MotionSection } from "./motion-section";
 
 export function ProjectsSection() {
   const projects = [
@@ -66,7 +67,7 @@ export function ProjectsSection() {
   };
 
   return (
-    <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8">
+    <MotionSection id="projects" className="py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold mb-4">
@@ -82,11 +83,11 @@ export function ProjectsSection() {
           {projects.map((project, index) => (
             <Card
               key={index}
-              className="group hover:shadow-lg transition-all duration-300">
+              className="group hover:shadow-lg transition-all duration-300 dark:hover:shadow-primary/10">
               <CardHeader>
                 <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4">
                   <div className="flex items-start gap-4">
-                    <div className="text-red-600 bg-red-50 p-3 rounded-lg">
+                    <div className="text-red-600 bg-red-50 dark:bg-red-900/50 dark:text-red-400 p-3 rounded-lg">
                       {project.icon}
                     </div>
                     <div>
@@ -100,7 +101,7 @@ export function ProjectsSection() {
                         </div>
                         <Badge
                           variant="outline"
-                          className="border-blue-600 text-blue-600">
+                          className="border-blue-600 text-blue-600 dark:border-blue-400 dark:text-blue-400">
                           {project.category}
                         </Badge>
                       </div>
@@ -119,7 +120,7 @@ export function ProjectsSection() {
                     <ul className="grid md:grid-cols-2 gap-2">
                       {project.features.map((feature, featureIndex) => (
                         <li key={featureIndex} className="flex items-start">
-                          <div className="w-2 h-2 bg-red-600 rounded-full mt-2 mr-3 flex-shrink-0" />
+                          <div className="w-2 h-2 bg-red-600 dark:bg-red-500 rounded-full mt-2 mr-3 flex-shrink-0" />
                           <span className="text-sm text-muted-foreground">
                             {feature}
                           </span>
@@ -128,11 +129,11 @@ export function ProjectsSection() {
                     </ul>
                   </div>
 
-                  <div className="bg-green-50 border border-green-200 rounded-lg p-4">
-                    <h4 className="font-semibold text-green-800 mb-1">
+                  <div className="bg-green-50 dark:bg-green-900/30 border border-green-200 dark:border-green-800/50 rounded-lg p-4">
+                    <h4 className="font-semibold text-green-800 dark:text-green-300 mb-1">
                       Project Impact:
                     </h4>
-                    <p className="text-sm text-green-700">{project.impact}</p>
+                    <p className="text-sm text-green-700 dark:text-green-400">{project.impact}</p>
                   </div>
 
                   <div>
@@ -152,7 +153,7 @@ export function ProjectsSection() {
                   <div className="flex flex-wrap gap-3 pt-4">
                     <Button
                       onClick={() => handleViewProject(project.gitName)}
-                      className="bg-red-600 hover:bg-red-700 text-white">
+                      className="bg-red-600 hover:bg-red-700 dark:bg-red-500 dark:hover:bg-red-600 text-white dark:text-white">
                       <Github className="mr-2 h-4 w-4" />
                       View on GitHub
                     </Button>
@@ -168,7 +169,7 @@ export function ProjectsSection() {
         </div>
 
         <div className="mt-16 text-center">
-          <Card className="bg-gradient-to-r from-blue-50 to-red-50 border-blue-200">
+          <Card className="bg-gradient-to-r from-blue-50 to-red-50 dark:from-blue-900/20 dark:to-red-900/20 border-blue-200 dark:border-blue-800/50">
             <CardContent className="p-8">
               <h3 className="text-xl font-semibold mb-2">
                 More Projects Coming Soon
@@ -183,7 +184,7 @@ export function ProjectsSection() {
                   window.open("https://github.com/grvmehto-18", "_blank")
                 }
                 variant="outline"
-                className="border-red-600 text-red-600 hover:bg-red-50">
+                className="border-red-600 text-red-600 hover:bg-red-50 dark:border-red-500 dark:text-red-500 dark:hover:bg-red-900/30">
                 <Github className="mr-2 h-4 w-4" />
                 Visit My GitHub
               </Button>
@@ -191,6 +192,6 @@ export function ProjectsSection() {
           </Card>
         </div>
       </div>
-    </section>
+    </MotionSection>
   );
 }

@@ -8,6 +8,7 @@ import {
   Monitor,
   Terminal,
 } from "lucide-react";
+import { MotionSection } from "./motion-section";
 
 export function SkillsSection() {
   const skillCategories = [
@@ -59,7 +60,7 @@ export function SkillsSection() {
   ];
 
   return (
-    <section id="skills" className="py-20 px-4 sm:px-6 lg:px-8">
+    <MotionSection id="skills" className="py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold mb-4">
@@ -78,14 +79,14 @@ export function SkillsSection() {
               key={index}
               className={`h-full ${
                 category.emphasis
-                  ? "ring-2 ring-red-600/20 bg-red-50/50 dark:bg-red-950/20"
+                  ? "ring-2 ring-red-600/20 bg-red-50/50 dark:bg-red-900/20 dark:ring-red-500/30"
                   : ""
               }`}>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2 text-lg">
                   <div
                     className={
-                      category.emphasis ? "text-red-700" : "text-red-600"
+                      category.emphasis ? "text-red-600 dark:text-red-500" : "text-primary"
                     }>
                     {category.icon}
                   </div>
@@ -93,7 +94,7 @@ export function SkillsSection() {
                   {category.emphasis && (
                     <Badge
                       variant="secondary"
-                      className="ml-auto bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200">
+                      className="ml-auto bg-red-100 text-red-800 dark:bg-red-900/50 dark:text-red-300">
                       Passion
                     </Badge>
                   )}
@@ -107,7 +108,7 @@ export function SkillsSection() {
                       variant="outline"
                       className={`text-sm ${
                         category.emphasis
-                          ? "border-red-200 bg-red-50 dark:border-red-800 dark:bg-red-950"
+                          ? "border-red-200 bg-red-50 dark:border-red-800/50 dark:bg-red-900/30"
                           : ""
                       }`}>
                       {skill}
@@ -138,6 +139,6 @@ export function SkillsSection() {
           </div>
         </div>
       </div>
-    </section>
+    </MotionSection>
   );
 }
