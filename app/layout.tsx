@@ -12,6 +12,7 @@ export const metadata: Metadata = {
   keywords:
     "Gourav Mehto, Software Developer, Java, Spring Boot, React, Full Stack Developer, Portfolio",
   authors: [{ name: "Gourav Mehto" }],
+  icons: "/profile_gourav-mehto-cropped.png",
   openGraph: {
     title: "Gourav Mehto - Software Developer",
     description:
